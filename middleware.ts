@@ -10,8 +10,16 @@ export function middleware(req: NextRequest) {
     requestHeaders.set('X-Custom-Header', 'your-custom-header-value');
 
     const response = NextResponse.next();
-    response.headers.set('Authorization', requestHeaders.get('Authorization'));
-    response.headers.set('X-Custom-Header', requestHeaders.get('X-Custom-Header'));
+
+    const authHeader = requestHeaders.get('Authorization');
+    const customHeader = requestHeaders.get('X-Custom-Header');
+
+    if (authHeader) {
+        response.headers.set('Authorization', authHeader);
+    }
+    if (customHeader) {
+        response.headers.set('X-Custom-Header', customHeader);
+    }
 
     return response;
 }
