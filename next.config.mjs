@@ -4,7 +4,7 @@ const nextConfig = {
         return [
             {
                 source: '/:path*',
-                destination: 'https://api.themoviedb.org/:path*',
+                destination: '/api/proxy/:path*',
             },
 
         ];
