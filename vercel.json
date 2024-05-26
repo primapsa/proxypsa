@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "middleware.ts",
+      "use": "@vercel/edge-functions"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "middleware.ts"
+    }
+  ]
+}
