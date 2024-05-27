@@ -13,7 +13,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // Извлечение пути из запроса и построение нового URL для целевого сервера
     const targetUrl = `https://api.themoviedb.org${req.url.replace('/api/proxy', '')}`;
 
-    // Добавление заголовков ко всем запросам
+    // Добавление за  всем запросам
     req.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMThlZjVjOTFjNDkzNDA5NGY2ZTk3YzUzNDEwYjQ1MyIsInN1YiI6IjY2M2Y5NmVjMTMyNzIxZjUxODIxMGJjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MHRIcWru0tXRfowkGqX1dJnfJoTCMAnKn3WDWY5ilYQ';
     req.headers['X-Custom-Header'] = `${targetUrl}`;
     console.log(`Proxying request to: ${targetUrl}`);
